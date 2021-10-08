@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Borealis.Models.TopTime>
+
+@{
+    ViewData["Title"] = "UnproccessedTimes";
+}
+
+<h1>Neobrađena vremena</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                <a asp-action="Accept" asp-route-id="@item.Id" class="btn btn-primary px-5" style="margin: 5px">Odobri</a>
+                <a asp-action="SendToDeleteApproval" asp-route-id="@item.Id" class="btn btn-danger px-5" style="margin: 5px">Odbaci</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
